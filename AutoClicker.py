@@ -1,9 +1,17 @@
-from pynput.keyboard import Key, Controller
+try:
+    from pynput.keyboard import Key, Controller
+except:
+    print("install pynput , using pip command 'pip install pynput'")
+    quit()
 import time
 import re
 import sys
 import os
-import keyboard
+try:
+    import keyboard
+except:
+    print ("install keyboard , using pip command 'pip install keyboard'")
+    quit()
 i=0
 pause = False
 
@@ -16,25 +24,25 @@ print ('\n')
 keys = input ("What keys do you want to press? ")
 loop = input ("Loop?(Y/N) ")
 delay = input ("Delay the keypresses by? (In seconds) ")
-keypresses = list(keys)
+keypresses =list (keys)
 print ('\n')
 
 #"Loop" variable Must Be True or False (Y/N)
 while not loop == True:
     if loop == "Y":
         loop = True
-        break 
+        break
     elif loop == "y":
         loop = True
-        break 
+        break
     elif loop == "N":
         loop = False
-        break 
+        break
     elif loop == "n":
         loop = False
-        break 
+        break
     else:
-        loop = input ("Please enter a valid Loop.(Y/N) ")
+        loop = input("Please enter a valid Loop.(Y/N) ")
     if loop == False:
         break
 print("")
@@ -74,7 +82,7 @@ if loop == True:
         i += 1
         time.sleep(delay)
 
-        if keyboard.is_pressed(pause): 
+        if keyboard.is_pressed(pause):
             break
 
 
@@ -85,6 +93,6 @@ if loop == False:
         keyboard.release(keypresses[i])
         i += 1
         time.sleep(delay)
-    
+
 print ("Done!")
 quit ()
